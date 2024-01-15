@@ -1,0 +1,10 @@
+management:
+  endpoints:
+    jmx:
+        exposure:
+            include: health,info,beans
+  info:
+    java:
+      enabled: true
+    env:
+      enabled: true
