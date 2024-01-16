@@ -1,10 +1,19 @@
+spring:
+  data:
+    mongodb:
+      uri: secret
 management:
   endpoints:
     jmx:
-        exposure:
-            include: health,info,beans
+      exposure:
+        include: health,info,beans
   info:
     java:
       enabled: true
     env:
       enabled: true
+
+app:
+  api:
+    pipeline:
+      url: "http://pipeline:8080"

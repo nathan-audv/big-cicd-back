@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class BigcicdbackApplication
 
 fun main(args: Array<String>) {
-	runApplication<BigcicdbackApplication>(*args)
+    runApplication<BigcicdbackApplication>(*args)
 }

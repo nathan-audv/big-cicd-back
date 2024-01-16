@@ -1,0 +1,8 @@
+spring:
+  data:
+    mongodb:
+      uri: mongodb://mongo:mongo@localhost:27017/pipeline?authSource=admin
+app:
+  api:
+    pipeline:
+      url: "https://crudcrud.com/api/71d52c69d32942a9a8a8d1d6fe52a1fb"
