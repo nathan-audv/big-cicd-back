@@ -1,5 +1,6 @@
 package imt.bigcicd.back.bigcicdback.domain
 
+import imt.bigcicd.back.bigcicdback.domain.utils.getZonedDate
 import imt.bigcicd.back.bigcicdback.output.database.models.JobModel
 import imt.bigcicd.back.bigcicdback.output.database.models.PipelineModel
 import java.time.ZonedDateTime
@@ -18,7 +19,7 @@ data class Pipeline(
             ref = model.ref,
             user = model.user,
             repository = model.repository,
-            pushDate = model.pushDate,
+            pushDate = model.pushDate.getZonedDate(),
             jobs = model.jobs.map { Job.fromModel(it) }
         )
     }
@@ -35,7 +36,7 @@ data class Job(
             jobName = model.jobName,
             logs = model.logs,
             status = model.status,
-            date = model.date
+            date = model.date.getZonedDate()
         )
     }
 }
