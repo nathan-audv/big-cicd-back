@@ -1,14 +1,15 @@
 package imt.bigcicd.back.bigcicdback.input.controllers.models
 
-import com.fasterxml.jackson.annotation.JsonProperty
-
 data class EventReq(
-    val ref: String,
-    val after: String,
-    val repository: Repository
+    val ref: String = "", // commit id
+    val repository: Repository = Repository(),
+    val sender: Sender = Sender(),
 )
 
 data class Repository(
-    @JsonProperty("full_name")
-    val fullName: String
+    val url: String = "", // repo url
+)
+
+data class Sender(
+    val id: Int = 0,
 )
