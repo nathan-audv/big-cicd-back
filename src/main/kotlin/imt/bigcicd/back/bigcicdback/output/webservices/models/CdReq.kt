@@ -3,8 +3,8 @@ package imt.bigcicd.back.bigcicdback.output.webservices.models
 import kotlinx.serialization.Serializable
 
 @Serializable
-data class PipelineReq(
+data class CdReq(
     val id: String = "",
-    val ref: String = "",
     val repository: String = "",
+    val tag: String = "",
 )
