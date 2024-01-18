@@ -3,10 +3,8 @@ package imt.bigcicd.back.bigcicdback.output.database.models
 import imt.bigcicd.back.bigcicdback.domain.Job
 import imt.bigcicd.back.bigcicdback.domain.Pipeline
 import imt.bigcicd.back.bigcicdback.domain.utils.getStringDate
-import org.bson.types.ObjectId
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
-import java.time.ZonedDateTime
 
 @Document(collection = "jobs")
 data class PipelineModel(
