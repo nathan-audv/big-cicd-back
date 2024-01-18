@@ -16,7 +16,7 @@ class RegistryWebService(
 
     fun getTags(repository: String): List<String> {
         return restClient.get()
-            .uri(getUrl(registryUrl, repository))
+            .uri(getUrl(registryUrl, getTagsPath, repository))
             .retrieve()
             .body(TagsRes::class.java).let {
                 it?.tags ?: listOf()
