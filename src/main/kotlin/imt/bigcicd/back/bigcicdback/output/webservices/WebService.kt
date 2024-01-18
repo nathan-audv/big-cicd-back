@@ -10,7 +10,7 @@ abstract class WebService {
 
     fun getUrl(baseUrl: String, path: String, vararg args: String): String {
         return environement.getProperty(path).let {
-            MessageFormat.format("$baseUrl$it", args)
+            MessageFormat.format("$baseUrl$it", *args)
         }
     }
 }

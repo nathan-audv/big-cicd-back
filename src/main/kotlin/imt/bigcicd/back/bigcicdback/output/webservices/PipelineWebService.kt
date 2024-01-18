@@ -1,5 +1,8 @@
 package imt.bigcicd.back.bigcicdback.output.webservices
 
+import imt.bigcicd.back.bigcicdback.domain.exceptions.InternalException
+import imt.bigcicd.back.bigcicdback.domain.exceptions.RepositoryException
+import imt.bigcicd.back.bigcicdback.domain.exceptions.RunnerException
 import imt.bigcicd.back.bigcicdback.output.webservices.models.CdReq
 import imt.bigcicd.back.bigcicdback.output.webservices.models.CicdReq
 import org.springframework.beans.factory.annotation.Value
@@ -23,6 +26,8 @@ class PipelineWebService(
             .contentType(MediaType.APPLICATION_JSON)
             .body(CicdReq(id, ref, repository))
             .retrieve()
+            .onStatus({ status -> status.is4xxClientError }, { _, _ -> throw RunnerException()})
+            .onStatus({ status -> status.is5xxServerError }, { _, _ -> throw InternalException()})
             .toBodilessEntity()
     }
 
@@ -32,6 +37,8 @@ class PipelineWebService(
             .contentType(MediaType.APPLICATION_JSON)
             .body (CdReq(id, repository, tag))
             .retrieve()
+            .onStatus({ status -> status.is4xxClientError }, { _, _ -> throw RunnerException() })
+            .onStatus({ status -> status.is5xxServerError }, { _, _ -> throw InternalException() })
             .toBodilessEntity()
     }
 }
