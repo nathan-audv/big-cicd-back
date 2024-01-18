@@ -6,7 +6,7 @@ import imt.bigcicd.back.bigcicdback.domain.utils.getStringDate
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 
-@Document(collection = "jobs")
+@Document(collection = "pipelines")
 data class PipelineModel(
     @Id
     val id: String = "",

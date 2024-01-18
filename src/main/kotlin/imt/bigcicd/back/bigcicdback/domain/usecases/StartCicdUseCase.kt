@@ -7,15 +7,16 @@ import imt.bigcicd.back.bigcicdback.output.services.PipelineService
 import org.springframework.stereotype.Component
 
 @Component
-class StartPipelineUseCase(
+class StartCicdUseCase(
     val pipelineService: PipelineService,
 ) : UseCase<EventReq, Unit> {
     override fun command(request: EventReq) {
+        val (ref, repository, sender) = request
         pipelineService.savePipeline(
             Pipeline(
-                ref = request.ref,
-                user = request.sender.id.toString(),
-                repository = request.repository.url,
+                ref = ref,
+                user = sender.id.toString(),
+                repository = repository.url,
             )
         ).let {
             pipelineService.startCicd(
