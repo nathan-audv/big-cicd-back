@@ -1,12 +1,13 @@
-package imt.bigcicd.back.bigcicdback.domain
+package imt.bigcicd.back.bigcicdback.domain.models
 
 import imt.bigcicd.back.bigcicdback.domain.utils.getZonedDate
 import imt.bigcicd.back.bigcicdback.output.database.models.JobModel
 import imt.bigcicd.back.bigcicdback.output.database.models.PipelineModel
+import org.bson.types.ObjectId
 import java.time.ZonedDateTime
 
 data class Pipeline(
-    val id: String = "",
+    val id: String = ObjectId().toHexString(),
     val ref: String = "",
     val user: String = "",
     val repository: String = "",

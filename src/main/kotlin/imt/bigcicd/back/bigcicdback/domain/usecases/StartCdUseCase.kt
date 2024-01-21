@@ -1,6 +1,6 @@
 package imt.bigcicd.back.bigcicdback.domain.usecases
 
-import imt.bigcicd.back.bigcicdback.domain.Pipeline
+import imt.bigcicd.back.bigcicdback.domain.models.Pipeline
 import imt.bigcicd.back.bigcicdback.domain.utils.UseCase
 import imt.bigcicd.back.bigcicdback.domain.models.RepositoryReq
 import imt.bigcicd.back.bigcicdback.output.services.PipelineService
