@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ResponseStatus
 
 @ControllerAdvice
 class ExceptionHandler {
-    @ExceptionHandler(value = [RepositoryNotFoundException::class])
+    @ExceptionHandler(value = [RepositoryNotFoundException::class, PipelineNotFoundException::class])
     @ResponseStatus(HttpStatus.NOT_FOUND)
     fun notFoundException(exception: Exception): ResponseEntity<String> {
         return ResponseEntity(exception.message, HttpStatus.NOT_FOUND)

@@ -5,6 +5,7 @@ import imt.bigcicd.back.bigcicdback.output.database.models.PipelineModel
 import imt.bigcicd.back.bigcicdback.output.database.repositories.PipelineRepository
 import imt.bigcicd.back.bigcicdback.output.webservices.PipelineWebService
 import org.springframework.data.domain.Pageable
+import org.springframework.data.repository.findByIdOrNull
 import org.springframework.stereotype.Service
 
 @Service
@@ -22,5 +23,9 @@ class PipelineService(
         return pipelineRepository.findAll(pageable)
             .toList()
             .map { Pipeline.fromModel(it) }
+    }
+
+    fun findById(id: String): Pipeline? {
+        return pipelineRepository.findByIdOrNull(id)?.let { Pipeline.fromModel(it) }
     }
 }
