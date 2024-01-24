@@ -4,4 +4,5 @@ class RepositoryNotFoundException(repository: String) : Exception("Repository $r
 class PipelineNotFoundException(id: String) : Exception("Pipeline $id not found")
 class RepositoryException : Exception("Registry as raised an exception")
 class RunnerException : Exception("Runner as raised an exception")
+class GitHubException : Exception("GitHub as raised an exception")
 class InternalException : Exception("Internal exception")

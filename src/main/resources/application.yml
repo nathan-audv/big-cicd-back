@@ -19,3 +19,9 @@ app:
       url: "http://pipeline-service:8080"
     registry:
       url: "http://registry-service:5000"
+    github:
+      url: "https://github.com"
+      id: ${GITHUB_ID}
+      secret: ${GITHUB_SECRET}
+    github-api:
+      url: "https://api.github.com"
