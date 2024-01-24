@@ -8,7 +8,11 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/v1/pipelines")
 interface PipelineResource {
     @PostMapping("/repository/{repository}/tag/{tag}")
-    fun startDeployment(@PathVariable repository: String, @PathVariable tag: String): ResponseEntity<Unit>
+    fun startDeployment(
+        @PathVariable repository: String,
+        @PathVariable tag: String,
+        @RequestHeader("X-User-Id") userId: Long,
+    ): ResponseEntity<Unit>
 
     @GetMapping
     fun getPipelines(
@@ -18,4 +22,7 @@ interface PipelineResource {
 
     @GetMapping("/{id}")
     fun getPipeline(@PathVariable id: String): ResponseEntity<Pipeline>
+
+    @PostMapping("/{id}/finish")
+    fun finishPipeline(@PathVariable id: String): ResponseEntity<Unit>
 }

@@ -9,7 +9,7 @@ data class LightPipeline(
     val repository: String = "",
     val ref: String = "",
     val date: ZonedDateTime = ZonedDateTime.now(),
-    val time: Long = 0, //TODO add time (BC-11)
+    val time: Long? = null,
 ) {
     companion object {
         fun fromPipeline(pipeline: Pipeline): LightPipeline {
@@ -18,7 +18,7 @@ data class LightPipeline(
                 repository = pipeline.repository,
                 ref = pipeline.ref,
                 date = pipeline.date,
-                time = 0, // TODO change here too
+                time = pipeline.time,
             )
         }
     }

@@ -11,9 +11,10 @@ data class PipelineModel(
     @Id
     val id: String = "",
     val ref: String = "",
-    val user: String = "",
+    val user: Long = 0,
     val repository: String = "",
     val date: String = "",
+    val time: Long? = null,
     val jobs: List<JobModel> = listOf()
 ) {
     companion object {
@@ -23,6 +24,7 @@ data class PipelineModel(
             user = domain.user,
             repository = domain.repository,
             date = domain.date.getStringDate(),
+            time = domain.time,
             jobs = domain.jobs.map { JobModel.fromDomain(it) }
         )
     }

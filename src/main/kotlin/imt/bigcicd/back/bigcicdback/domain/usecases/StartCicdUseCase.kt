@@ -15,7 +15,7 @@ class StartCicdUseCase(
         pipelineService.savePipeline(
             Pipeline(
                 ref = ref,
-                user = sender.id.toString(),
+                user = sender.id.toLong(),
                 repository = repository.url,
             )
         ).let {
