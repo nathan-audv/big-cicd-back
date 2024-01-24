@@ -41,9 +41,6 @@ class GitHubWebService(
             .header("Accept", "application/json")
             .header("Authorization", "Bearer $accessToken")
             .retrieve()
-            .let {
-                it
-            }
             .body(UserIdRes::class.java)
     }
 }

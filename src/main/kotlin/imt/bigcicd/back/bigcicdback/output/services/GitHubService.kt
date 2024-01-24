@@ -9,5 +9,5 @@ class GitHubService(
 ) {
     fun getAccessToken(code: String): String? = gitHubWebService.getAccessToken(code)?.accessToken
 
-    fun getUserId(accessToken: String): Int? = gitHubWebService.getUserId(accessToken)?.id
+    fun getUserId(accessToken: String): Long? = gitHubWebService.getUserId(accessToken)?.id
 }
