@@ -18,4 +18,7 @@ interface PipelineResource {
 
     @GetMapping("/{id}")
     fun getPipeline(@PathVariable id: String): ResponseEntity<Pipeline>
+
+    @PostMapping("/{id}/finish")
+    fun finishPipeline(@PathVariable id: String): ResponseEntity<Unit>
 }

@@ -12,6 +12,7 @@ data class Pipeline(
     val user: String = "",
     val repository: String = "",
     val date: ZonedDateTime = ZonedDateTime.now(),
+    val time: Long? = null,
     val jobs: MutableList<Job> = mutableListOf()
 ) {
     companion object {
@@ -21,6 +22,7 @@ data class Pipeline(
             user = model.user,
             repository = model.repository,
             date = model.date.getZonedDate(),
+            time = model.time,
             jobs = model.jobs.map { Job.fromModel(it) }.toMutableList()
         )
     }

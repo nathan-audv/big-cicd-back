@@ -2,6 +2,7 @@ package imt.bigcicd.back.bigcicdback.input.controllers.pipeline
 
 import imt.bigcicd.back.bigcicdback.domain.models.Pipeline
 import imt.bigcicd.back.bigcicdback.domain.models.RepositoryReq
+import imt.bigcicd.back.bigcicdback.domain.usecases.FinishPipelineUseCase
 import imt.bigcicd.back.bigcicdback.domain.usecases.GetPipelineUseCase
 import imt.bigcicd.back.bigcicdback.domain.usecases.GetPipelinesUseCase
 import imt.bigcicd.back.bigcicdback.domain.usecases.StartCdUseCase
@@ -14,7 +15,8 @@ import org.springframework.web.bind.annotation.RestController
 class PipelineController(
     val startCdUseCase: StartCdUseCase,
     val getPipelinesUseCase: GetPipelinesUseCase,
-    val getPipelineUseCase: GetPipelineUseCase
+    val getPipelineUseCase: GetPipelineUseCase,
+    val finishPipelineUseCase: FinishPipelineUseCase
 ) : PipelineResource {
     override fun startDeployment(repository: String, tag: String): ResponseEntity<Unit> {
         startCdUseCase.command(RepositoryReq(repository, tag))
@@ -30,5 +32,10 @@ class PipelineController(
 
     override fun getPipeline(id: String): ResponseEntity<Pipeline> {
         return ResponseEntity.ok(getPipelineUseCase.command(id))
+    }
+
+    override fun finishPipeline(id: String): ResponseEntity<Unit> {
+        finishPipelineUseCase.command(id)
+        return ResponseEntity.ok().build()
     }
 }
