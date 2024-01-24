@@ -4,7 +4,6 @@ import imt.bigcicd.back.bigcicdback.domain.exceptions.GitHubException
 import imt.bigcicd.back.bigcicdback.domain.utils.UseCase
 import imt.bigcicd.back.bigcicdback.input.controllers.models.UserData
 import imt.bigcicd.back.bigcicdback.output.services.GitHubService
-import imt.bigcicd.back.bigcicdback.output.webservices.models.UserIdRes
 import org.springframework.stereotype.Component
 
 @Component

@@ -22,9 +22,11 @@ class RegistryWebService(
         return restClient.get()
             .uri(getUrl(registryUrl, getTagsPath, repository))
             .retrieve()
-            .onStatus({ status -> status.isSameCodeAs(HttpStatus.NOT_FOUND)}, { _, _ -> throw RepositoryNotFoundException(repository)})
-            .onStatus({ status -> status.is4xxClientError }, { _, _ -> throw RepositoryException()})
-            .onStatus({ status -> status.is5xxServerError }, { _, _ -> throw InternalException()})
+            .onStatus(
+                { status -> status.isSameCodeAs(HttpStatus.NOT_FOUND) },
+                { _, _ -> throw RepositoryNotFoundException(repository) })
+            .onStatus({ status -> status.is4xxClientError }, { _, _ -> throw RepositoryException() })
+            .onStatus({ status -> status.is5xxServerError }, { _, _ -> throw InternalException() })
             .body(TagsRes::class.java).let {
                 it?.tags ?: listOf()
             }

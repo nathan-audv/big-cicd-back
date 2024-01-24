@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 @Component
 class GetPipelineUseCase(
     private val pipelineService: PipelineService
-): UseCase<String, Pipeline> {
+) : UseCase<String, Pipeline> {
     override fun command(request: String): Pipeline {
         return pipelineService.findById(request) ?: throw PipelineNotFoundException("Pipeline not found")
     }

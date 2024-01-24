@@ -16,8 +16,10 @@ class GitHubWebService(
 
     @Value("\${app.api.github.url}")
     val githubUrl: String = ""
+
     @Value("\${app.api.github.id}")
     val githubClientId: String = ""
+
     @Value("\${app.api.github.secret}")
     val githubClientSecret: String = ""
 
