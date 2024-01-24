@@ -11,8 +11,8 @@ data class Pipeline(
     val ref: String = "",
     val user: String = "",
     val repository: String = "",
-    val pushDate: ZonedDateTime = ZonedDateTime.now(),
-    val jobs: List<Job> = listOf()
+    val date: ZonedDateTime = ZonedDateTime.now(),
+    val jobs: MutableList<Job> = mutableListOf()
 ) {
     companion object {
         fun fromModel(model: PipelineModel) = Pipeline(
@@ -20,21 +20,21 @@ data class Pipeline(
             ref = model.ref,
             user = model.user,
             repository = model.repository,
-            pushDate = model.pushDate.getZonedDate(),
-            jobs = model.jobs.map { Job.fromModel(it) }
+            date = model.date.getZonedDate(),
+            jobs = model.jobs.map { Job.fromModel(it) }.toMutableList()
         )
     }
 }
 
 data class Job(
-    val jobName: String = "",
+    val step: String = "",
     val logs: String = "",
     val status: String = "",
     val date: ZonedDateTime = ZonedDateTime.now()
 ) {
     companion object {
         fun fromModel(model: JobModel) = Job(
-            jobName = model.jobName,
+            step = model.step,
             logs = model.logs,
             status = model.status,
             date = model.date.getZonedDate()

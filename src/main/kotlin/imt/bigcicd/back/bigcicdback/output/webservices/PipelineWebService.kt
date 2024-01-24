@@ -1,7 +1,6 @@
 package imt.bigcicd.back.bigcicdback.output.webservices
 
 import imt.bigcicd.back.bigcicdback.domain.exceptions.InternalException
-import imt.bigcicd.back.bigcicdback.domain.exceptions.RepositoryException
 import imt.bigcicd.back.bigcicdback.domain.exceptions.RunnerException
 import imt.bigcicd.back.bigcicdback.output.webservices.models.CdReq
 import imt.bigcicd.back.bigcicdback.output.webservices.models.CicdReq
@@ -26,8 +25,8 @@ class PipelineWebService(
             .contentType(MediaType.APPLICATION_JSON)
             .body(CicdReq(id, ref, repository))
             .retrieve()
-            .onStatus({ status -> status.is4xxClientError }, { _, _ -> throw RunnerException()})
-            .onStatus({ status -> status.is5xxServerError }, { _, _ -> throw InternalException()})
+            .onStatus({ status -> status.is4xxClientError }, { _, _ -> throw RunnerException() })
+            .onStatus({ status -> status.is5xxServerError }, { _, _ -> throw InternalException() })
             .toBodilessEntity()
     }
 
@@ -35,7 +34,7 @@ class PipelineWebService(
         restClient.post()
             .uri(getUrl(pipelineUrl, startCdPath))
             .contentType(MediaType.APPLICATION_JSON)
-            .body (CdReq(id, repository, tag))
+            .body(CdReq(id, repository, tag))
             .retrieve()
             .onStatus({ status -> status.is4xxClientError }, { _, _ -> throw RunnerException() })
             .onStatus({ status -> status.is5xxServerError }, { _, _ -> throw InternalException() })

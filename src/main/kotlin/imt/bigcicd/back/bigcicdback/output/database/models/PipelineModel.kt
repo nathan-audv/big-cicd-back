@@ -13,7 +13,7 @@ data class PipelineModel(
     val ref: String = "",
     val user: String = "",
     val repository: String = "",
-    val pushDate: String = "",
+    val date: String = "",
     val jobs: List<JobModel> = listOf()
 ) {
     companion object {
@@ -22,7 +22,7 @@ data class PipelineModel(
             ref = domain.ref,
             user = domain.user,
             repository = domain.repository,
-            pushDate = domain.pushDate.getStringDate(),
+            date = domain.date.getStringDate(),
             jobs = domain.jobs.map { JobModel.fromDomain(it) }
         )
     }
@@ -30,14 +30,14 @@ data class PipelineModel(
 }
 
 data class JobModel(
-    val jobName: String = "",
+    val step: String = "",
     val logs: String = "",
     val status: String = "",
     val date: String = ""
 ) {
     companion object {
         fun fromDomain(domain: Job) = JobModel(
-            jobName = domain.jobName,
+            step = domain.step,
             logs = domain.logs,
             status = domain.status,
             date = domain.date.getStringDate()

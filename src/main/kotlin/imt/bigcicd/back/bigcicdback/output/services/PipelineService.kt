@@ -13,7 +13,8 @@ class PipelineService(
     val pipelineRepository: PipelineRepository,
     val pipelineWebService: PipelineWebService,
 ) {
-    fun savePipeline(pipeline: Pipeline): Pipeline = Pipeline.fromModel(pipelineRepository.save(PipelineModel.fromDomain(pipeline)))
+    fun savePipeline(pipeline: Pipeline): Pipeline =
+        Pipeline.fromModel(pipelineRepository.save(PipelineModel.fromDomain(pipeline)))
 
     fun startCicd(id: String, ref: String, repository: String) = pipelineWebService.startCicd(id, ref, repository)
 
