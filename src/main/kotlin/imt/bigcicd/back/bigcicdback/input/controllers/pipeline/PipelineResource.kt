@@ -2,7 +2,6 @@ package imt.bigcicd.back.bigcicdback.input.controllers.pipeline
 
 import imt.bigcicd.back.bigcicdback.domain.models.Pipeline
 import imt.bigcicd.back.bigcicdback.input.controllers.models.LightPipeline
-import io.swagger.v3.oas.annotations.headers.Header
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
