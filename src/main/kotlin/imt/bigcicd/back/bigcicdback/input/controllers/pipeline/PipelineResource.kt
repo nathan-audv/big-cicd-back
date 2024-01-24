@@ -2,13 +2,18 @@ package imt.bigcicd.back.bigcicdback.input.controllers.pipeline
 
 import imt.bigcicd.back.bigcicdback.domain.models.Pipeline
 import imt.bigcicd.back.bigcicdback.input.controllers.models.LightPipeline
+import io.swagger.v3.oas.annotations.headers.Header
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RequestMapping("/v1/pipelines")
 interface PipelineResource {
     @PostMapping("/repository/{repository}/tag/{tag}")
-    fun startDeployment(@PathVariable repository: String, @PathVariable tag: String): ResponseEntity<Unit>
+    fun startDeployment(
+        @PathVariable repository: String,
+        @PathVariable tag: String,
+        @RequestHeader("X-User-Id") userId: Long,
+    ): ResponseEntity<Unit>
 
     @GetMapping
     fun getPipelines(

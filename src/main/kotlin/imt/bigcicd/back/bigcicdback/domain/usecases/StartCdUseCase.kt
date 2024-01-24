@@ -11,11 +11,11 @@ class StartCdUseCase(
     val pipelineService: PipelineService
 ) : UseCase<RepositoryReq, Unit> {
     override fun command(request: RepositoryReq) {
-        val (repository, tag) = request
+        val (userId, repository, tag) = request
         pipelineService.savePipeline(
             Pipeline(
                 ref = tag,
-                user = "", //TODO get user
+                user = userId,
                 repository = repository,
             )
         ).let {

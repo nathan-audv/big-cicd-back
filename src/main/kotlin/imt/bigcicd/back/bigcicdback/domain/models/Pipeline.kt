@@ -9,7 +9,7 @@ import java.time.ZonedDateTime
 data class Pipeline(
     val id: String = ObjectId().toHexString(),
     val ref: String = "",
-    val user: String = "",
+    val user: Long = 0,
     val repository: String = "",
     val date: ZonedDateTime = ZonedDateTime.now(),
     val time: Long? = null,

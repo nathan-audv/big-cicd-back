@@ -11,7 +11,7 @@ data class PipelineModel(
     @Id
     val id: String = "",
     val ref: String = "",
-    val user: String = "",
+    val user: Long = 0,
     val repository: String = "",
     val date: String = "",
     val time: Long? = null,
