@@ -20,7 +20,7 @@ class ExceptionHandler {
         return ResponseEntity(exception.message, HttpStatus.NOT_FOUND)
     }
 
-    @ExceptionHandler(value = [RepositoryException::class, RunnerException::class])
+    @ExceptionHandler(value = [RepositoryException::class, RunnerException::class, GitHubException::class])
     @ResponseStatus(HttpStatus.SERVICE_UNAVAILABLE)
     fun externalException(exception: Exception): ResponseEntity<String> {
         return ResponseEntity(exception.message, HttpStatus.SERVICE_UNAVAILABLE)
