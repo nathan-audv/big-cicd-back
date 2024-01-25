@@ -18,9 +18,8 @@ class PipelineController(
     val getPipelineUseCase: GetPipelineUseCase,
     val finishPipelineUseCase: FinishPipelineUseCase
 ) : PipelineResource {
-    override fun startDeployment(repository: String, tag: String, userId: Long): ResponseEntity<Unit> {
-        startCdUseCase.command(RepositoryReq(userId, repository, tag))
-        return ResponseEntity.ok().build()
+    override fun startDeployment(repository: String, tag: String, userId: Long): ResponseEntity<String> {
+        return ResponseEntity.ok(startCdUseCase.command(RepositoryReq(userId, repository, tag)))
     }
 
     override fun getPipelines(page: Int, size: Int): ResponseEntity<List<LightPipeline>> {

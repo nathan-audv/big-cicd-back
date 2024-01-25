@@ -9,10 +9,10 @@ import org.springframework.stereotype.Component
 @Component
 class StartCdUseCase(
     val pipelineService: PipelineService
-) : UseCase<RepositoryReq, Unit> {
-    override fun command(request: RepositoryReq) {
+) : UseCase<RepositoryReq, String> {
+    override fun command(request: RepositoryReq): String {
         val (userId, repository, tag) = request
-        pipelineService.savePipeline(
+        return pipelineService.savePipeline(
             Pipeline(
                 ref = tag,
                 user = userId,
@@ -24,6 +24,7 @@ class StartCdUseCase(
                 it.repository,
                 it.ref
             )
+            it.id
         }
     }
 }

@@ -12,7 +12,7 @@ interface PipelineResource {
         @PathVariable repository: String,
         @PathVariable tag: String,
         @RequestHeader("X-User-Id") userId: Long,
-    ): ResponseEntity<Unit>
+    ): ResponseEntity<String>
 
     @GetMapping
     fun getPipelines(
