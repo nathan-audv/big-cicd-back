@@ -28,9 +28,8 @@ class AddJobUseCase(
                 Audit(
                     idUser = pipeline.user,
                     idPipeline = request.id,
-                    jobStep = pipeline.jobs.last().step,
-                    jobLogs = pipeline.jobs.last().logs,
-                    jobDate = pipeline.jobs.last().date
+                    jobStep = request.step,
+                    jobLogs = request.logs
                 )
             )
         } ?: throw PipelineNotFoundException(request.id)

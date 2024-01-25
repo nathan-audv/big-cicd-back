@@ -3,9 +3,10 @@ package imt.bigcicd.back.bigcicdback.domain.models
 import java.time.ZonedDateTime
 import imt.bigcicd.back.bigcicdback.domain.utils.getZonedDate
 import imt.bigcicd.back.bigcicdback.output.database.models.AuditModel
+import org.bson.types.ObjectId
 
 data class Audit (
-        val id: String = "",
+        val id: String = ObjectId().toHexString(),
         val idUser: Long = 0,
         val idPipeline: String = "",
         val jobStep: String = "",
