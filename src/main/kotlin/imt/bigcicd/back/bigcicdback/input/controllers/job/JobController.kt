@@ -20,7 +20,6 @@ class JobController(
                     step = step,
                     logs = logs,
                     status = status,
-                    date = date
                 )
 
             }
