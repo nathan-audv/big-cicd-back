@@ -29,14 +29,14 @@ data class Pipeline(
 }
 
 data class Job(
-    val step: String = "",
+    val name: String = "",
     val logs: String = "",
     val status: String = "",
     val date: ZonedDateTime = ZonedDateTime.now()
 ) {
     companion object {
         fun fromModel(model: JobModel) = Job(
-            step = model.step,
+            name = model.name,
             logs = model.logs,
             status = model.status,
             date = model.date.getZonedDate()

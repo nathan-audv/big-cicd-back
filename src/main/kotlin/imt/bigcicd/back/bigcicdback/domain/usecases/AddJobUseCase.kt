@@ -20,7 +20,7 @@ class AddJobUseCase(
         pipelineService.findById(request.id)?.let { pipeline ->
             pipeline.jobs.add(
                 Job(
-                    step = request.step,
+                    name = request.name,
                     logs = request.logs,
                     status = request.status
                 )
@@ -30,7 +30,7 @@ class AddJobUseCase(
                 Audit(
                     idUser = pipeline.user,
                     idPipeline = request.id,
-                    jobStep = request.step,
+                    jobName = request.name,
                     jobLogs = request.logs
                 )
             )

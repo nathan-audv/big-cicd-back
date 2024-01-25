@@ -6,20 +6,20 @@ import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
 @Document(collection = "audits")
 data class AuditModel(
-        @Id
+    @Id
     val id: String = "",
-        val idUser: Long = 0,
-        val idPipeline: String = "",
-        val jobStep: String = "",
-        val jobLogs: String = "",
-        val jobDate: String = ""
+    val idUser: Long = 0,
+    val idPipeline: String = "",
+    val jobName: String = "",
+    val jobLogs: String = "",
+    val jobDate: String = ""
 ) {
     companion object {
         fun fromDomain(domain: Audit) = AuditModel(
             id = domain.id,
             idUser = domain.idUser,
             idPipeline = domain.idPipeline,
-            jobStep = domain.jobStep,
+            jobName = domain.jobName,
             jobLogs = domain.jobLogs,
             jobDate = domain.jobDate.getStringDate()
         )

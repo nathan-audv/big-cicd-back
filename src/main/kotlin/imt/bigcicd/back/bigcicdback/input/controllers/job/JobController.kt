@@ -17,7 +17,7 @@ class JobController(
             job.run {
                 JobReq(
                     id = id,
-                    step = step,
+                    name = name,
                     logs = logs,
                     status = status,
                 )

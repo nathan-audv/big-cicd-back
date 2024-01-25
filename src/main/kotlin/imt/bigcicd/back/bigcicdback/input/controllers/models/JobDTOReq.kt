@@ -1,7 +1,7 @@
 package imt.bigcicd.back.bigcicdback.input.controllers.models
 
 data class JobDTOReq(
-    val step: String,
+    val name: String,
     val logs: String,
     val status: String
 )

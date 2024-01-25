@@ -32,14 +32,14 @@ data class PipelineModel(
 }
 
 data class JobModel(
-    val step: String = "",
+    val name: String = "",
     val logs: String = "",
     val status: String = "",
     val date: String = ""
 ) {
     companion object {
         fun fromDomain(domain: Job) = JobModel(
-            step = domain.step,
+            name = domain.name,
             logs = domain.logs,
             status = domain.status,
             date = domain.date.getStringDate()
