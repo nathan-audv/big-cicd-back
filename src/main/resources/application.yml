@@ -15,8 +15,8 @@ management:
 
 app:
   api:
-    pipeline:
-      url: "http://pipeline-service:8080"
+    runner:
+      url: "http://cicd-runner-service:8080"
     registry:
       url: "http://registry-service:5000"
     github:

@@ -10,13 +10,13 @@ import org.springframework.stereotype.Service
 import org.springframework.web.client.RestClient
 
 @Service
-class PipelineWebService(
+class RunnerWebService(
     val restClient: RestClient
 ) : WebService() {
     private val startCicdPath = "pipeline.post.start.cicd.v1"
     private val startCdPath = "pipeline.post.start.cd.v1"
 
-    @Value("\${app.api.pipeline.url}")
+    @Value("\${app.api.runner.url}")
     val pipelineUrl: String = ""
 
     fun startCicd(id: String, ref: String, repository: String) {
