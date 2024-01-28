@@ -10,8 +10,6 @@ import imt.bigcicd.back.bigcicdback.domain.usecases.StartCdUseCase
 import imt.bigcicd.back.bigcicdback.input.controllers.models.LightPipeline
 import org.springframework.data.domain.PageRequest
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
