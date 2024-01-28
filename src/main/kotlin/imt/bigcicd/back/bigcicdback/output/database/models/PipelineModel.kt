@@ -15,6 +15,7 @@ data class PipelineModel(
     val repository: String = "",
     val date: String = "",
     val time: Long? = null,
+    val status: String = "Started",
     val jobs: List<JobModel> = listOf()
 ) {
     companion object {
@@ -25,6 +26,7 @@ data class PipelineModel(
             repository = domain.repository,
             date = domain.date.getStringDate(),
             time = domain.time,
+            status = domain.status,
             jobs = domain.jobs.map { JobModel.fromDomain(it) }
         )
     }

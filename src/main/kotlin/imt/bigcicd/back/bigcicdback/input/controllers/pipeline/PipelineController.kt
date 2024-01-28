@@ -1,5 +1,6 @@
 package imt.bigcicd.back.bigcicdback.input.controllers.pipeline
 
+import imt.bigcicd.back.bigcicdback.domain.models.FinishReq
 import imt.bigcicd.back.bigcicdback.domain.models.Pipeline
 import imt.bigcicd.back.bigcicdback.domain.models.RepositoryReq
 import imt.bigcicd.back.bigcicdback.domain.usecases.FinishPipelineUseCase
@@ -9,6 +10,8 @@ import imt.bigcicd.back.bigcicdback.domain.usecases.StartCdUseCase
 import imt.bigcicd.back.bigcicdback.input.controllers.models.LightPipeline
 import org.springframework.data.domain.PageRequest
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
@@ -33,8 +36,8 @@ class PipelineController(
         return ResponseEntity.ok(getPipelineUseCase.command(id))
     }
 
-    override fun finishPipeline(id: String): ResponseEntity<Unit> {
-        finishPipelineUseCase.command(id)
+    override fun finishPipeline(id: String, status: String): ResponseEntity<Unit> {
+        finishPipelineUseCase.command(FinishReq(id, status))
         return ResponseEntity.ok().build()
     }
 }

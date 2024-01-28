@@ -7,13 +7,14 @@ import org.bson.types.ObjectId
 import java.time.ZonedDateTime
 
 data class Pipeline(
-    val id: String = ObjectId().toHexString(),
-    val ref: String = "",
-    val user: Long = 0,
-    val repository: String = "",
-    val date: ZonedDateTime = ZonedDateTime.now(),
-    val time: Long? = null,
-    val jobs: MutableList<Job> = mutableListOf()
+        val id: String = ObjectId().toHexString(),
+        val ref: String = "",
+        val user: Long = 0,
+        val repository: String = "",
+        val date: ZonedDateTime = ZonedDateTime.now(),
+        val time: Long? = null,
+        val status: String = "Started",
+        val jobs: MutableList<Job> = mutableListOf()
 ) {
     companion object {
         fun fromModel(model: PipelineModel) = Pipeline(
@@ -23,6 +24,7 @@ data class Pipeline(
             repository = model.repository,
             date = model.date.getZonedDate(),
             time = model.time,
+            status = model.status,
             jobs = model.jobs.map { Job.fromModel(it) }.toMutableList()
         )
     }
