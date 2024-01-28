@@ -1,5 +1,6 @@
 package imt.bigcicd.back.bigcicdback.input.controllers.pipeline
 
+import imt.bigcicd.back.bigcicdback.domain.models.FinishReq
 import imt.bigcicd.back.bigcicdback.domain.models.Pipeline
 import imt.bigcicd.back.bigcicdback.domain.models.RepositoryReq
 import imt.bigcicd.back.bigcicdback.domain.usecases.FinishPipelineUseCase
@@ -33,8 +34,8 @@ class PipelineController(
         return ResponseEntity.ok(getPipelineUseCase.command(id))
     }
 
-    override fun finishPipeline(id: String): ResponseEntity<Unit> {
-        finishPipelineUseCase.command(id)
+    override fun finishPipeline(id: String, status: String): ResponseEntity<Unit> {
+        finishPipelineUseCase.command(FinishReq(id, status))
         return ResponseEntity.ok().build()
     }
 }
