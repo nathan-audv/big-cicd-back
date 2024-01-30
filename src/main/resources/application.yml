@@ -4,19 +4,14 @@ spring:
       uri: ${DB_URI}
 management:
   endpoints:
-    jmx:
-      exposure:
-        include: health,info,beans
-  info:
-    java:
+    enabled-by-default: false
+  endpoint:
+    health:
       enabled: true
-    env:
-      enabled: true
-
 app:
   api:
-    pipeline:
-      url: "http://pipeline-service:8080"
+    runner:
+      url: "http://cicd-runner-service:8080"
     registry:
       url: "http://registry-service:5000"
     github:
