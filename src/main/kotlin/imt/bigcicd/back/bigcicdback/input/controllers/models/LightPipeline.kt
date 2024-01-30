@@ -9,6 +9,7 @@ data class LightPipeline(
     val repository: String = "",
     val ref: String = "",
     val date: ZonedDateTime = ZonedDateTime.now(),
+    val status: String = "Started",
     val time: Long? = null,
 ) {
     companion object {
@@ -18,6 +19,7 @@ data class LightPipeline(
                 repository = pipeline.repository,
                 ref = pipeline.ref,
                 date = pipeline.date,
+                status = pipeline.status,
                 time = pipeline.time,
             )
         }
