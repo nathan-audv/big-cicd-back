@@ -19,11 +19,11 @@ class RunnerWebService(
     @Value("\${app.api.runner.url}")
     val pipelineUrl: String = ""
 
-    fun startCicd(id: String, ref: String, repository: String) {
+    fun startCicd(id: String, ref: String, name: String, url: String) {
         restClient.post()
             .uri(getUrl(pipelineUrl, startCicdPath))
             .contentType(MediaType.APPLICATION_JSON)
-            .body(CicdReq(id, ref, repository))
+            .body(CicdReq(id, ref, name, url))
             .retrieve()
             .onStatus({ status -> status.is4xxClientError }, { _, _ -> throw RunnerException() })
             .onStatus({ status -> status.is5xxServerError }, { _, _ -> throw InternalException() })

@@ -22,6 +22,7 @@ class StartCicdUseCase(
             pipelineService.startCicd(
                 it.id,
                 it.ref,
+                repository.name,
                 it.repository
             )
         }

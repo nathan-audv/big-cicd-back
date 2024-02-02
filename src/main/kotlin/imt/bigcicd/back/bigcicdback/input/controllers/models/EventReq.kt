@@ -7,7 +7,8 @@ data class EventReq(
 )
 
 data class Repository(
-    val url: String = "", // repo url
+    val name: String = "",
+    val url: String = "",
 )
 
 data class Sender(

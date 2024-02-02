@@ -16,7 +16,7 @@ class PipelineService(
     fun savePipeline(pipeline: Pipeline): Pipeline =
         Pipeline.fromModel(pipelineRepository.save(PipelineModel.fromDomain(pipeline)))
 
-    fun startCicd(id: String, ref: String, repository: String) = runnerWebService.startCicd(id, ref, repository)
+    fun startCicd(id: String, ref: String, name: String, url: String) = runnerWebService.startCicd(id, ref, name, url)
 
     fun startCd(id: String, repository: String, tag: String) = runnerWebService.startCd(id, repository, tag)
 
